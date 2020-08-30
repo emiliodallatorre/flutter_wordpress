@@ -20,6 +20,7 @@ import 'media.dart';
 class Post {
   /// ID of the post
   int id;
+  Map<String, dynamic> rawJson;
 
   /// The date the post was published, in the site's Timezone.
   String date;
@@ -110,6 +111,7 @@ class Post {
     @required String content,
     @required String excerpt,
     @required this.authorID,
+    @required this.rawJson,
     String featuredMedia,
     this.featuredMediaID,
     this.commentStatus = PostCommentStatus.open,
@@ -126,6 +128,7 @@ class Post {
 
   Post.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    rawJson = json;
     date = json['date'];
     dateGmt = json['date_gmt'];
     guid = json['guid'] != null ? new Guid.fromJson(json['guid']) : null;
